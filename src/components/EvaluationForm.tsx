@@ -21,45 +21,13 @@ const EvaluationForm = () => {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="bg-white p-6 rounded-lg shadow-sm">
-        <h3 className="text-lg font-medium text-gray-900 mb-4">Status do Aluno</h3>
-        <div className="flex flex-wrap gap-6">
-          <div className="flex items-center space-x-2">
-            <Checkbox id="passou" />
-            <label
-              htmlFor="passou"
-              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            >
-              Passou
-            </label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Checkbox id="reprovou" />
-            <label
-              htmlFor="reprovou"
-              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            >
-              Reprovou
-            </label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Checkbox id="saiu" />
-            <label
-              htmlFor="saiu"
-              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            >
-              Saiu
-            </label>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-white p-6 rounded-lg shadow-sm">
         <h3 className="text-lg font-medium text-gray-900 mb-4">Matérias Cursadas</h3>
         <Table>
           <TableHeader>
             <TableRow>
               <TableHead>Matéria</TableHead>
               <TableHead>Professor</TableHead>
+              <TableHead>Status</TableHead>
               <TableHead>Comentário</TableHead>
             </TableRow>
           </TableHeader>
@@ -68,6 +36,37 @@ const EvaluationForm = () => {
               <TableRow key={materia.id}>
                 <TableCell>{materia.nome}</TableCell>
                 <TableCell>{materia.professor}</TableCell>
+                <TableCell>
+                  <div className="flex gap-4">
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id={`continuar-${materia.id}`} />
+                      <label
+                        htmlFor={`continuar-${materia.id}`}
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        Continuar
+                      </label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id={`estagio-${materia.id}`} />
+                      <label
+                        htmlFor={`estagio-${materia.id}`}
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        Estágio
+                      </label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id={`aprendiz-${materia.id}`} />
+                      <label
+                        htmlFor={`aprendiz-${materia.id}`}
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        Aprendiz
+                      </label>
+                    </div>
+                  </div>
+                </TableCell>
                 <TableCell>
                   <Textarea
                     placeholder="Adicione um comentário sobre o desempenho do aluno nesta matéria..."
